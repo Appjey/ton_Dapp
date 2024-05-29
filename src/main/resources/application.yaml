@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: tonApp-backend
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tonApp-db
+    username: postgres
+    password: postgres
+    hikari:
+      auto-commit: false
+
+ton-api:
+  auth-header-secret: "AF56IZZA67IF4TYAAAAKWMYN5B5TBHIZP6VCSME5IPPDDI7SVHB3GF52JA36DYV4DTHH3DI"
+  base-url:
+    net: "https://tonapi.io/v2"
+    test-net: "https://testnet.tonapi.io/v2"
+
+

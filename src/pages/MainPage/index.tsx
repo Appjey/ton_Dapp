@@ -1,35 +1,27 @@
-import React, {FC, useState, useMemo} from 'react'
+import { FC, useState } from 'react';
 
-import ConnectStep from './Steps/ConnectStep';
-import WalletInfoStep from './Steps/WalletInfo';
-
-import {ToastContainer, toast} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import {Box, Container, Stack, Typography} from '@mui/material';
-import Steps from "./Steps";
+import { Stack, Typography } from '@mui/material';
+import Steps from './Steps';
 
 export const enum StepType {
-    CONNECT = 'connect',
-    WALLET_INFO = 'wallet-info'
+	CONNECT = 'connect',
+	WALLET_INFO = 'wallet-info',
 }
 
-type Props = {
-    error: string | null;
-}
+const MainPage: FC = () => {
+	const [step, setStep] = useState<StepType>(StepType.CONNECT);
 
-const MainPage: FC<Props> = ({error}) => {
-    const notify = () => toast(error, {type: 'error'})
+	return (
+		<Stack direction="column" justifyContent="center" height="100%" width={1280}>
+			<Typography variant="h3" textAlign="center" mb={4}>
+				designed by vacZWER
+			</Typography>
+			<Steps step={step} setStep={setStep} />
+			<ToastContainer />
+		</Stack>
+	);
+};
 
-    const [step, setStep] = useState<StepType>(StepType.CONNECT);
-
-    return (
-        <Stack direction='column' justifyContent='center' height='100%' width={1280}>
-            <Typography variant='h3' textAlign='center' mb={4}>disigned by vacZWER</Typography>
-            <Steps step={step} setStep={setStep}/>
-            <ToastContainer/>
-        </Stack>
-
-    )
-}
-
-export default MainPage
+export default MainPage;

@@ -12,15 +12,10 @@ export const useFetchTokenBalance = () => {
 	) => {
 		try {
 			axios
-				.post(`${CONFIG.baseUrl}/get_token_balance`, {
-					account_id: accountId,
-					token_symbol: tokenSymbol,
-				})
+				.get(`${CONFIG.baseUrl}/get_token_balance/account_id/${accountId}/token_symbol/${tokenSymbol}`)
 				.then((response) => {
 					const { data } = response;
-
 					setTokenBalance(data.token_balance / 10 ** 9);
-					console.log(data);
 				})
 				.catch((error) => {
 					throw new Error(error || 'Unknown error');
